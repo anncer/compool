@@ -8,7 +8,7 @@ export function isArray(arg: any[]): boolean {
   return Array.isArray(arg);
 }
 
-export function isObject(obj: object) {
+export function isObject(obj: any) {
   return Object.prototype.toString.call(obj) === "[object Object]";
 }
 
@@ -18,10 +18,7 @@ export function isRealArray<T>(arr?: T[]) {
 }
 
 export function isString(str: any) {
-  if (typeof str === "string" || str instanceof String) {
-    return true;
-  }
-  return false;
+  return typeof str === "string" || str instanceof String
 }
 
 // 检测是不是整数
