@@ -8,6 +8,10 @@ lib/
 cjs/
 types/
 
+.roolup.cache/
+tsconfig.node.tsbuildinfo
+publish.sh
+
 
 #
 .DS_Store

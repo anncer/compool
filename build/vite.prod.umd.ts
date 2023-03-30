@@ -1,5 +1,5 @@
 import type { InlineConfig } from "vite";
-import { terser } from "rollup-plugin-terser";
+import { terser } from "@rollup/plugin-terser";
 
 const config: InlineConfig = {
   mode: "production",
