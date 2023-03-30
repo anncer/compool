@@ -15,7 +15,7 @@
     "build:types": "tsc --declaration --emitDeclarationOnly",
     "ts-check": "tsc -p tsconfig.json --noEmit",
     "build": "rimraf dist && rollup -c && rimraf dist/types",
-    "pub": "sh ./publish.sh"
+    "pub": "sh ./publish/pub-origin.sh"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
