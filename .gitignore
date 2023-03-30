@@ -12,7 +12,7 @@ types/
 tsconfig.node.tsbuildinfo
 publish.sh
 .rollup.cache
-
+publ-host.sh
 #
 .DS_Store
 npm-debug.log*
