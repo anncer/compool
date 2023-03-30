@@ -11,7 +11,7 @@ types/
 .roolup.cache/
 tsconfig.node.tsbuildinfo
 publish.sh
-
+.rollup.cache
 
 #
 .DS_Store
