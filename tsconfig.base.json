@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
-    "composite": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
     "target": "es2015",
