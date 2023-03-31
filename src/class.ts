@@ -17,6 +17,6 @@ export const typeOf = (obj: any) => {
     return String(obj);
   }
   return typeof obj === "object" || typeof obj === "function"
-    ? class2type[toString.call(obj)] || "object"
+    ? class2type[getType(obj)] || "object"
     : typeof obj;
 };
