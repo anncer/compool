@@ -2,7 +2,6 @@ import { isArray, isProperty } from "./is";
 // 对象深拷贝
 export const deepClone = (obj: any) => {
   const objClone: any = isArray(obj) ? [] : {};
-
   if (obj && typeof obj === "object") {
     for (const key in obj) {
       if (isProperty(obj, key)) {

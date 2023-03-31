@@ -29,13 +29,13 @@ export const getCss = (obj: any, attribute:any) => {
 /*
  * 获取元素位置
  */
-export const getPoint = (obj:any) => {
+export const getPoint = (obj: any) => {
   // 获取某元素以浏览器左上角为原点的坐标
   let t = obj.offsetTop; // 获取该元素对应父容器的上边距
   let l = obj.offsetLeft; // 对应父容器的上边距
   // 判断是否有父容器，如果存在则累加其边距
-  const patent = obj.offsetParent;
-  while (patent) {
+  const patent =  obj.offsetParent;
+  while (!!patent) {
     t += patent.offsetTop; // 叠加父容器的上边距
     l += patent.offsetLeft; // 叠加父容器的左边距
   }
@@ -52,6 +52,7 @@ export const getPoint = (obj:any) => {
 export const sliceFirst = (str: string) => {
   return str.slice(1);
 };
+
 /**
  * 根据传入的参数判断用id class查找元素
  * @param {string} .app #app

@@ -1,40 +1,18 @@
 
-// 金额分隔符
-export const analysiss = (opt: number | string) => {
-  if (opt) {
-      const str = opt + '';    //把数字变成string类型
-      if (str.indexOf('.') !== -1) {  //判断是否附带小数
-          const intSum = str
-              .substring(0, str.indexOf('.'))
-              .replace(/\B(?=(?:\d{3})+$)/g, ','); //取到整数部分
-          const dot = str.substring(str.length, str.indexOf('.')); //取到小数部分搜索
-          const ret = intSum + dot;
-          return ret;
+// coin 是符号， arr 是数组， type 是加载前面还是后面 true 为前，false为后
+// 把数组转化为以点隔开的字符串   默认是后面点
+export const joinPoint = (arr: any[], coin = ",", type = false) => {
+  let str = "";
+  if (arr.length > 0) {
+    arr.forEach((it, i) => {
+      // 放在前面的时候第一个不放
+      // 放在后面的时候最后一个不放
+      if ((type && i === 0) || (!type && i === arr.length - 1)) {
+        str += it;
       } else {
-          const ret = str.replace(/\B(?=(?:\d{3})+$)/g, ',');
-          return ret + '.00';
+        str += type ? coin + it : it + coin;
       }
-  } else {
-      return '0.00';
+    });
   }
-}
-
-// 金额分隔符
-export const analysis = (opt: number | string) => {
-  if (opt) {
-      const str = opt + '';    //把数字变成string类型
-      if (str.indexOf('.') !== -1) {  //判断是否附带小数
-          const intSum = str
-              .substring(0, str.indexOf('.'))
-              .replace(/\B(?=(?:\d{3})+$)/g, ','); //取到整数部分
-          const dot = str.substring(str.length, str.indexOf('.')); //取到小数部分搜索
-          const ret = intSum + dot;
-          return ret;
-      } else {
-          const ret = str.replace(/\B(?=(?:\d{3})+$)/g, ',');
-          return ret ;
-      }
-  } else {
-      return '0';
-  }
-}
+  return str;
+};

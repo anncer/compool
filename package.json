@@ -17,6 +17,13 @@
     "build": "rimraf dist && rollup -c && rimraf dist/types",
     "pub": "sh ./publish/pub-origin.sh"
   },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anncer/compool"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-json": "^6.0.0",

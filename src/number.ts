@@ -1,5 +1,5 @@
 // 小数点补两位
-export const returnFloat = (_value: number): string => {
+export const addFloat = (_value: number): string => {
   let value = String(Math.round(parseFloat(String(_value)) * 100) / 100);
   const xsd = value.toString().split(".");
 
@@ -39,7 +39,7 @@ export const addPercentage = (n: number | string): string => {
 
 
 // 添加千位字符并添加正负号
-export const checkNum = (num: number) => {
+export const formatCurrencySign = (num: number) => {
   if (isNaN(num)) return "--";
   if (num > 0) {
     return "+" + addPercentage(num);
@@ -49,3 +49,44 @@ export const checkNum = (num: number) => {
   }
   return addPercentage(num);
 };
+
+
+// 金额分隔符  analysiss
+export const formatCurrencyEnd = (opt: number | string) => {
+  if (opt) {
+      const str = opt + '';    //把数字变成string类型
+      if (str.indexOf('.') !== -1) {  //判断是否附带小数
+          const intSum = str
+              .substring(0, str.indexOf('.'))
+              .replace(/\B(?=(?:\d{3})+$)/g, ','); //取到整数部分
+          const dot = str.substring(str.length, str.indexOf('.')); //取到小数部分搜索
+          const ret = intSum + dot;
+          return ret;
+      } else {
+          const ret = str.replace(/\B(?=(?:\d{3})+$)/g, ',');
+          return ret + '.00';
+      }
+  } else {
+      return '0.00';
+  }
+}
+
+// 金额分隔符 analysis
+export const formatCurrencyPiece = (opt: number | string) => {
+  if (opt) {
+      const str = opt + '';    //把数字变成string类型
+      if (str.indexOf('.') !== -1) {  //判断是否附带小数
+          const intSum = str
+              .substring(0, str.indexOf('.'))
+              .replace(/\B(?=(?:\d{3})+$)/g, ','); //取到整数部分
+          const dot = str.substring(str.length, str.indexOf('.')); //取到小数部分搜索
+          const ret = intSum + dot;
+          return ret;
+      } else {
+          const ret = str.replace(/\B(?=(?:\d{3})+$)/g, ',');
+          return ret ;
+      }
+  } else {
+      return '0';
+  }
+}

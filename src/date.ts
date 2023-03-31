@@ -1,8 +1,8 @@
 // 获取当前时间的前几天或后几天
-export const GetDateSomeDay = (AddDayCount: number) => {
+export const getDateAfter = (count: number) => {
   const dd = new Date();
 
-  dd.setDate(dd.getDate() + AddDayCount);
+  dd.setDate(dd.getDate() + count);
   const y = dd.getFullYear();
   const m =
     dd.getMonth() + 1 < 10 ? "0" + (dd.getMonth() + 1) : dd.getMonth() + 1;
@@ -17,7 +17,7 @@ export const GetDateSomeDay = (AddDayCount: number) => {
  * @param {string} option
  * @returns {string}
  */
-export function formatTime(time: number) {
+export function formatTime2Text(time: number | string | Date) {
   const d = new Date(time).getTime();
   const now = Date.now();
 
@@ -41,7 +41,7 @@ export function formatTime(time: number) {
  * @param {string} cFormat
  * @returns {string}
  */
-export function parseTime(time: string | number | object, cFormat: string) {
+export function formatTime(time: string | number | object, cFormat: string) {
   if (arguments.length === 0) {
     return null;
   }
