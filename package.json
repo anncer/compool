@@ -1,6 +1,6 @@
 {
   "name": "compool",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "a js tools library",
   "module": "dist/index.es.js",
   "main": "dist/index.cjs.js",
@@ -15,7 +15,8 @@
     "build:types": "tsc --declaration --emitDeclarationOnly",
     "ts-check": "tsc -p tsconfig.json --noEmit",
     "build": "rimraf dist && rollup -c && rimraf dist/types",
-    "pub": "sh ./publish/pub-origin.sh"
+    "pub:npm": "sh ./publish/pub-origin.sh",
+    "pub:host": "sh ./publish/pub-host.sh"
   },
   "files": [
     "dist"
