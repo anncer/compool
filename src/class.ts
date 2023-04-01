@@ -1,7 +1,7 @@
 
 // 获取类型的方法
 
-export const getType = (target: any) => {
+export const typeCall = (target: any) => {
   return toString.call(target);
 };
 
@@ -17,6 +17,6 @@ export const typeOf = (obj: any) => {
     return String(obj);
   }
   return typeof obj === "object" || typeof obj === "function"
-    ? class2type[getType(obj)] || "object"
+    ? class2type[typeCall(obj)] || "object"
     : typeof obj;
 };
