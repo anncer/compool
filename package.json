@@ -5,7 +5,6 @@
   "module": "dist/index.es.js",
   "main": "dist/index.cjs.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "exports": {
     "import": "./dist/index.es.js",
     "require": "./dist/index.cjs.js",
@@ -20,7 +19,8 @@
     "clear": "rimraf dist",
     "prettier": "prettier --write .",
     "prepare": "husky install",
-    "lint": "eslint . --fix --ext .ts,.vue,.js"
+    "lint": "eslint . --fix --ext .ts,.vue,.js",
+    "precommit": "lint-staged"
   },
   "files": [
     "dist"
@@ -32,8 +32,8 @@
   "lint-staged": {
     "*.{vue,js,ts}": [
       "npm run lint",
-      "npx prettier --write ./src  ",
-      "git add ."
+      "prettier --write ",
+      "git add"
     ]
   },
   "devDependencies": {
