@@ -16,3 +16,4 @@ export const joinPoint = (arr: any[], coin = ",", type = false) => {
   }
   return str;
 };
+

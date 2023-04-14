@@ -1,10 +1,6 @@
 import { isRealArray, isObject } from "./is";
 import { joinPoint } from './tools'
 
-/**
- * @param {string} url
- * @returns {Object}
- */
 export function getQueryObject(url: string) {
   const path = url == null ? window.location.href : url;
   const search = path.substring(path.lastIndexOf("?") + 1);
@@ -20,10 +16,7 @@ export function getQueryObject(url: string) {
   return obj;
 }
 
-/**
- * @param {string} input value
- * @returns {number} output value
- */
+
 export function byteLength(str: string) {
   // returns the byte length of an utf8 string
   let s = str.length;
@@ -36,10 +29,6 @@ export function byteLength(str: string) {
   return s;
 }
 
-/**
- * @param {Array} actual
- * @returns {Array}
- */
 export function cleanArray(actual: any[]) {
   const newArray:any[] = [];
   for (let i = 0; i < actual.length; i++) {
@@ -50,10 +39,7 @@ export function cleanArray(actual: any[]) {
   return newArray;
 }
 
-/**
- * @param {Object} json
- * @returns {Array}
- */
+
 export function paramJson(json: any): string {
   if (!json) return "";
   return cleanArray(
@@ -64,10 +50,7 @@ export function paramJson(json: any): string {
   ).join("&");
 }
 
-/**
- * @param {string} url
- * @returns {Object}
- */
+
 export function param2Obj(url: string) {
   const search = url.split("?")[1];
   if (!search) {
@@ -84,20 +67,6 @@ export function param2Obj(url: string) {
   );
 }
 
-/**
- * @param {string} val
- * @returns {string}
- */
-export function html2Text(val: string) {
-  const div = document.createElement("div");
-  div.innerHTML = val;
-  return div.textContent || div.innerText;
-}
-
-/**
- * @param {Array} arr
- * @returns {Array}
- */
 export function uniqueArr(arr: any[]) {
   return Array.from(new Set(arr));
 }
@@ -194,3 +163,4 @@ export const jointUrl3 = (baseUrl: string, obj: any) => {
     return baseUrl;
   }
 };
+

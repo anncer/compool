@@ -1,11 +1,10 @@
 export * from './array'
-export * from './class'
+export * from './object'
 export * from './copy'
 export * from './count'
 export * from './date'
 export * from './dom'
 export * from './eq'
-export * from './fn'
 export * from './hasUnicode'
 export * from './is'
 export * from './number'
@@ -16,13 +15,12 @@ export * from './unicodeSize'
 export * from './validate'
 
 import * as __array from './array'
-import * as __class from './class'
+import * as __class from './object'
 import * as __copy from './copy'
 import * as __count from './count'
 import * as __date from './date'
 import * as __dom from './dom'
 import * as __eq from './eq'
-import * as __fn from './fn'
 import * as __hasUnicode from './hasUnicode'
 import * as __is from './is'
 import * as __number from './number'
@@ -41,7 +39,6 @@ export default {
   ...__date,
   ...__dom,
   ...__eq,
-  ...__fn,
   ...__hasUnicode,
   ...__is,
   ...__number,

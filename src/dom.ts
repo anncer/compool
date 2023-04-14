@@ -258,3 +258,9 @@ export function getChildren(ele:any, clazz:any) {
   }
   return res;
 }
+
+export function html2Text(val: string) {
+  const div = document.createElement("div");
+  div.innerHTML = val;
+  return div.textContent || div.innerText;
+}
