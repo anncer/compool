@@ -18,6 +18,9 @@ export const getDateAfter = (count: number) => {
  * @returns {string}
  */
 export function formatTime2Text(time: number | string | Date) {
+  if (!time) {
+    return ''
+  }
   const d = new Date(time).getTime();
   const now = Date.now();
 
@@ -30,8 +33,12 @@ export function formatTime2Text(time: number | string | Date) {
     return Math.ceil(diff / 60) + "分钟前";
   } else if (diff < 3600 * 24) {
     return Math.ceil(diff / 3600) + "小时前";
-  } else if (diff < 3600 * 24 * 2) {
-    return "1天前";
+  } else if (diff < 3600 * 24 * 30) {
+    return Math.ceil(diff / 3600 / 24) +"天前";
+  } else if (diff < 3600 * 24 * 30 * 12) {
+    return Math.ceil(diff / 3600/ 24/ 30) + "月前";
+  } else {
+    return Math.ceil(diff / 3600/ 24/ 360) + "年前";
   }
 }
 

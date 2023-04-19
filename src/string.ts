@@ -1,11 +1,15 @@
 import hasUnicode from './hasUnicode'
 import unicodeSize from './unicodeSize'
 
+export function isString(str: any) {
+  return typeof str === "string" || str instanceof String
+}
+
 export function stringSize(string:string) {
   return hasUnicode(string) ? unicodeSize(string) : asciiSize(string)
 }
 
-export function asciiSize({ length }:any) {
+function asciiSize({ length }:any) {
   return length
 }
 

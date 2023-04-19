@@ -1,49 +1,79 @@
-import {isArrayLike, isString } from './is'
-import { stringSize } from './string'
 
-// 获取类型的方法
-export const getType = (target: any) => {
-  return toString.call(target);
+// 判断方法合集
+
+export function isObject(obj: any) {
+  return Object.prototype.toString.call(obj) === "[object Object]";
+}
+
+// 检测对象是否是函数
+export const isFunction = (fn: any) => {
+  return typeof fn === "function";
 };
 
-export const typeOf = (obj: any) => {
-  const class2type: any = {};
-  const typeList =
-    "Boolean Number String Function Array Date RegExp Object Error Symbol";
-  typeList.split(" ").forEach(function (name) {
-    class2type["[object " + name + "]"] = name.toLowerCase();
-  });
-
-  if (obj == null) {
-    return String(obj);
-  }
-  return typeof obj === "object" || typeof obj === "function"
-    ? class2type[getType(obj)] || "object"
-    : typeof obj;
+// 判断参数是不是null
+export const isNull = (ele: any) => {
+  return ele === null;
 };
 
-export function getTag(value:any) {
-  if (value == null) {
-    return value === undefined ? '[object Undefined]' : '[object Null]'
+// 判断参数是不是空，0 为不空
+export const isNone = (some: any): boolean => {
+  return some === 0 ? true : Boolean(some);
+};
+
+
+// 判断一个对象是不是素对象
+export const isPlainObject = (obj: any) => {
+  if (typeof obj !== "object" || obj.nodeType || isWindow(obj)) {
+    return false;
   }
-  return toString.call(value)
+  try {
+    if (obj.constructor && obj.constructor.prototype === Object.prototype) {
+      return true;
+    }
+  } catch (e) {
+    return false;
+  }
+};
+
+
+// 判读是否非window对象
+export const isWindow = (obj: any) => {
+  return obj !== null && obj === obj.window;
+};
+
+
+// 检测对象是不是空对象
+export const isHasKey = (obj: object) => {
+  return Object.keys(obj).length > 0;
+};
+
+
+// 检测某个对象时候含有某个key
+export function isProperty<T extends object>(obj: T, key: string) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
 }
 
 
-// 返回任意对象的长度
-export function size(unk:any) {
-  const mapTag = '[object Map]'
-  const setTag = '[object Set]'
-  if (unk == null) {
-    return 0
+// 检测某个对象是否为空，每个key都是空值
+export const isEmptyObject = (obj: any) => {
+  let _v = true;
+  for (const key in obj) {
+    if (obj[key]) {
+      if (typeof obj[key] === "object" && obj[key] instanceof Array) {
+        obj[key].length > 0 ? (_v = false) : (_v = true);
+      } else if (typeof obj[key] === "object") {
+        isEmptyObject(obj[key]);
+      } else if (
+        obj[key] != null &&
+        obj[key] !== undefined &&
+        obj[key] !== "null" &&
+        obj[key] !== "undefined"
+      ) {
+        _v = false;
+      }
+    }
   }
-  if (isArrayLike(unk)) {
-    return isString(unk) ? stringSize(unk) : unk.length
-  }
-  const tag = getTag(unk)
-  if (tag == mapTag || tag == setTag) {
-    return unk.size
-  }
-  return Object.keys(unk).length
-}
+  return _v;
+};
+
 

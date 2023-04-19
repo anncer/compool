@@ -14,8 +14,8 @@ export function isExternal(path: string): boolean {
  * @param {string} str
  * @returns {Boolean}
  */
-export function validUsername(str: string): boolean {
-  return str.trim().length >= 5;
+export function validLength(str: string, num: Number = 5): boolean {
+  return str.trim().length >= num;
 }
 
 /**

@@ -1,9 +1,10 @@
 
-// 获取类型的方法
-
-export const typeCall = (target: any) => {
-  return toString.call(target);
-};
+export function getTag(value:any) {
+  if (value == null) {
+    return value === undefined ? '[object Undefined]' : '[object Null]'
+  }
+  return toString.call(value)
+}
 
 export const typeOf = (obj: any) => {
   const class2type: any = {};
@@ -17,6 +18,7 @@ export const typeOf = (obj: any) => {
     return String(obj);
   }
   return typeof obj === "object" || typeof obj === "function"
-    ? class2type[typeCall(obj)] || "object"
+    ? class2type[getTag(obj)] || "object"
     : typeof obj;
 };
+

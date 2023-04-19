@@ -1,21 +1,4 @@
-/**
- * @param {HTMLElement} element
- * @param {string} className
- */
-export function toggleClass(element: any, className: string) {
-  if (!element || !className) {
-    return;
-  }
-  let classString = element.className;
-  const arr = classString.split(' ')
-  if (arr.includes(className)) {
-    const idx = arr.indexOf(className)
-    arr.splice(idx, 1)
-  } else {
-    arr.push(className)
-  }
-  element.className = arr.join(' ');
-}
+
 
 // 获取一个元素的样式
 export const getCss = (obj: any, attribute:any) => {
@@ -49,7 +32,7 @@ export const getPoint = (obj: any) => {
  * 截取字符串
  * @param {string}
  */
-export const sliceFirst = (str: string) => {
+const sliceFirst = (str: string) => {
   return str.slice(1);
 };
 
@@ -257,10 +240,4 @@ export function getChildren(ele:any, clazz:any) {
     }
   }
   return res;
-}
-
-export function html2Text(val: string) {
-  const div = document.createElement("div");
-  div.innerHTML = val;
-  return div.textContent || div.innerText;
 }
