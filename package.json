@@ -1,6 +1,7 @@
 {
   "name": "compool",
   "version": "1.0.0",
+  "type": "module",
   "description": "a js tools library",
   "module": "dist/index.es.js",
   "main": "dist/index.cjs.js",
