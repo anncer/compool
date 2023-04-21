@@ -76,4 +76,44 @@ export const isEmptyObject = (obj: any) => {
   return _v;
 };
 
+export const removeKey = (obj: any, key: any) => {
+  delete obj[key]
+}
 
+export const removeKeys = (obj: any, arr: any[]) => {
+  arr.forEach(key => {
+    if (isProperty(obj, key)) {
+      removeKey(obj, key)
+    }
+  })
+}
+
+
+export function objectMerge (target:any, source:any) {
+  if (typeof target !== 'object') {
+    target = {}
+  }
+  if (Array.isArray(source)) {
+    return source.slice()
+  }
+  Object.keys(source).forEach(property => {
+    const sourceProperty = source[property]
+    if (typeof sourceProperty === 'object') {
+      target[property] = objectMerge(target[property], sourceProperty)
+    } else {
+      target[property] = sourceProperty
+    }
+  })
+  return target
+}
+
+
+// 对象拷贝，相对于Object做合并，此方法只拷贝目标对象有的属性的值
+export const objectRepet = (current:any, souce:any) => {
+  for (const key in current) {
+    if (isProperty(souce, key)) {
+      current[key] = souce[key]
+    }
+  }
+  return current
+}

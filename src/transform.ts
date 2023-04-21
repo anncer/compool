@@ -1,7 +1,7 @@
 import { isRealArray } from './array'
 import { isObject } from './object'
 import { joinPoint } from './tools'
-import { cleanArray } from './array'
+// import { cleanArray } from './array'
 
 // export function getQueryObject(url: string) {
 //   const path = url == null ? window.location.href : url;
@@ -43,8 +43,6 @@ export function param2Obj(url: string) {
       '"}'
   );
 }
-
-
 
 // 获取所有地址栏参数
 export const getAllQuery = () => {
@@ -145,7 +143,7 @@ export const qsOrigin = (baseUrl: string, obj: any) => {
 
 
 // 添加千位字符
-export const addPercentage = (n: number | string): string => {
+const addPercentage = (n: number | string): string => {
   const num = n.toString();
   let center = "";
   if (num === undefined) return num;

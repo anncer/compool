@@ -43,3 +43,17 @@ export function cleanArray(actual: any[]) {
   }
   return newArray;
 }
+
+// 获取数组中的重复项
+export const getArrayRepeat = (arr: any[]) => {
+  const noRepear: any[] = []
+  const repeat: any[] = []
+  arr.forEach(ele => {
+    if (!noRepear.includes(ele)) {
+      noRepear.push(ele)
+    } else {
+      repeat.push(ele)
+    }
+  })
+  return repeat
+}
